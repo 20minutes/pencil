@@ -18,6 +18,21 @@ class Pencil(object):
         self._hideLegend = None
         self._hideAxes = None
         self._template = "alphas"
+        self._yMin = None
+        self._yMax = None
+        self._lineWidth = None
+
+    def y_min(self, value):
+        self._yMin = value
+        return self
+
+    def y_max(self, value):
+        self._yMax = value
+        return self
+
+    def line_width(self, value):
+        self._lineWidth = value
+        return self
 
     def set_title(self, title):
         self._title = title
