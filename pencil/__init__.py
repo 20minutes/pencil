@@ -3,14 +3,14 @@ from urllib import urlencode
 
 
 class Pencil(object):
-    def __init__(self, begin=None, end=None):
+    def __init__(self, begin=None, until=None):
         """Creates a Pencil object, specifying *optionally* a date range ::
 
             pencil = Pencil(begin="-1hours")
 
         """
         self._from = begin
-        self._until = end
+        self._until = until
         self._title = None
         self._vtitle = None
         self._target = []
@@ -28,6 +28,14 @@ class Pencil(object):
         self._lineWidth = None
         self._graphType = "line"
         self._format = None
+
+    def begin(self, value):
+        self._from = value
+        return self
+
+    def until(self, value):
+        self._until = value
+        return self
 
     def y_min(self, value):
         """yMin set the minimum y value for the generated image"""
