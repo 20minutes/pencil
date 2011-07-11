@@ -8,7 +8,7 @@ You can report bugs and discuss features on the `issues page <https://github.com
 Installation
 ------------
 
-1. Either check out Pencil from Github_ or to pull a release off PyPI_ ::
+Either check out Pencil from Github_ or to pull a release off PyPI_ ::
    
 	pip install pencil
 
