@@ -142,8 +142,9 @@ class Pencil(object):
         """
         self._target.append(metric)
         if colors:
-            colors = colors.split(",")
-            self._colorList += ",".join(colors)
+            self._colorList = ",".join([color 
+                for color in (self._colorList.split(",") + colors.split(","))
+                if color])
         return self
 
     def graph_type(self, value):
