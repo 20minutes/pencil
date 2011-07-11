@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 from urllib import urlencode
 
+BOOLEAN_MAP = {
+    True: "true",
+    False: "false"
+}
 
 class Pencil(object):
     def __init__(self, begin=None, until=None):
@@ -76,12 +80,12 @@ class Pencil(object):
 
     def hide_legend(self, boolean):
         """Hides the graph legend"""
-        self._hideLegend = boolean
+        self._hideLegend = BOOLEAN_MAP[boolean]
         return self
 
     def hide_axes(self, boolean):
         """Hides both the x and y axis labels as well as the background grid"""
-        self._hideAxes = boolean
+        self._hideAxes = BOOLEAN_MAP[boolean]
         return self
 
     def set_template(self, template):
@@ -131,14 +135,15 @@ class Pencil(object):
         self._bgcolor = color
         return self
 
-    def add_metric(self, metric, color=None):
+    def add_metric(self, metric, colors=""):
         """
         Add a metric to image, may be either a graphite path
         or a function (such as avg)
         """
         self._target.append(metric)
-        if color:
-            self._colorList += ",%s" % color
+        if colors:
+            colors = colors.split(",")
+            self._colorList += ",".join(colors)
         return self
 
     def graph_type(self, value):
