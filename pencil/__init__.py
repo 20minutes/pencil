@@ -156,9 +156,9 @@ class Pencil(object):
         self._graphType = value
         return self
 
-    def add_deploy(self, deploy):
+    def add_deploy(self, deploy, colors=""):
         """Add a deploy metric"""
-        self._target.append("drawAsInfinite(%s)" % deploy)
+        self.add_metric("drawAsInfinite(%s)" % deploy, colors)
         return self
 
     def format(self, value):
