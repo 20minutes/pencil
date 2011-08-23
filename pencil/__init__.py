@@ -24,8 +24,8 @@ class Pencil(object):
         self._fontName = "Helvetica"
         self._areaMode = "none"
         self._lineMode = "slope"
-        self._hideLegend = False
-        self._hideAxes = False
+        self._hideLegend = "false"
+        self._hideAxes = "false"
         self._template = "alphas"
         self._yMin = None
         self._yMax = None
@@ -172,7 +172,7 @@ class Pencil(object):
 
     def _build_params(self):
         return dict([(key[1:], value)
-            for key, value in self.__dict__.iteritems() if value])
+            for key, value in self.__dict__.iteritems() if not value is None])
 
     def url(self, base, width, height):
         """Return image url based on the given URL for Graphite"""
