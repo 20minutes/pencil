@@ -24,8 +24,8 @@ class Pencil(object):
         self._fontName = "Helvetica"
         self._areaMode = "none"
         self._lineMode = "slope"
-        self._hideLegend = None
-        self._hideAxes = None
+        self._hideLegend = False
+        self._hideAxes = False
         self._template = "alphas"
         self._yMin = None
         self._yMax = None
