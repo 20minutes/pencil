@@ -167,7 +167,7 @@ class Pencil(object):
 
         **Default : None**
         """
-        self.format = value
+        self._format = value
         return self
 
     def _build_params(self):
