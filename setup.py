@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pencil',
-    version='0.6.2',
+    version='0.7',
     description='Dumb but useful wrapper around Graphite URL API.',
     author='Timothée Peignier',
     author_email='tpeignier@20minutes.fr',
