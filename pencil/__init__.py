@@ -6,6 +6,7 @@ BOOLEAN_MAP = {
     False: "false"
 }
 
+
 class Pencil(object):
     def __init__(self, begin=None, until=None):
         """Creates a Pencil object, specifying *optionally* a date range ::
@@ -135,14 +136,16 @@ class Pencil(object):
         self._bgcolor = color
         return self
 
-    def add_metric(self, metric, colors=""):
+    def add_metric(self, metric, colors="", alias=None):
         """
         Add a metric to image, may be either a graphite path
         or a function (such as avg)
         """
+        if alias:
+            metric = "alias({0}, \"{1}\")".format(metric, alias)
         self._target.append(metric)
         if colors:
-            self._colorList = ",".join([color 
+            self._colorList = ",".join([color
                 for color in (self._colorList.split(",") + colors.split(","))
                 if color])
         return self
@@ -156,9 +159,9 @@ class Pencil(object):
         self._graphType = value
         return self
 
-    def add_deploy(self, deploy, colors=""):
+    def add_deploy(self, deploy, colors="", alias=None):
         """Add a deploy metric"""
-        self.add_metric("drawAsInfinite(%s)" % deploy, colors)
+        self.add_metric("drawAsInfinite({0})".format(deploy), colors, alias)
         return self
 
     def format(self, value):
@@ -179,4 +182,4 @@ class Pencil(object):
         params = self._build_params()
         params['width'] = width
         params['height'] = height
-        return "%s?%s" % (base, urlencode(params, True))
+        return "{0}?{1}".format(base, urlencode(params, True))
